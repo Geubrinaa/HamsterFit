@@ -13,7 +13,7 @@ $gejala = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['gejala'])) {
     $selected_gejala = $_POST['gejala'];
     $_SESSION['selected_gejala'] = $selected_gejala;
-    header("Location: diagnosa.php?id_hamster=$id_hamster");
+    header('Location: diagnosa.php?id_hamster=' . $id_hamster);
     exit();
 }
 ?>

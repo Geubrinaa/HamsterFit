@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'includes/config.php';
+require '../../includes/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username']);
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         <div class="mt-6 text-center space-y-2">
             <a href="registrasi.php" class="text-sm text-pink-500 hover:text-pink-600 font-bold transition-colors block">Belum punya akun? Daftar gratis</a>
-            <a href="portal.php" class="text-xs text-gray-400 hover:text-gray-500 transition-colors block">← Kembali ke Portal</a>
+            <a href="../../index.php" class="text-xs text-gray-400 hover:text-gray-500 transition-colors block">← Kembali ke Portal</a>
         </div>
     </div>
 </body>
