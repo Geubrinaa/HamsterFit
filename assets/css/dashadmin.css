@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+body { background: #f4f7f6; color: #333; }
+.dashboard-container { display: flex; flex-direction: column; min-height: 100vh; animation: fadeIn 0.5s ease-out;}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.dashboard-header { background: white; padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+.dashboard-header h1 { color: #2c3e50; font-size: 1.8rem; }
+.admin-info, .user-info { display: flex; align-items: center; gap: 1.5rem; }
+.logout-btn { background: #ff7675; color: white; text-decoration: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; transition: background 0.3s; }
+.logout-btn:hover { background: #d63031; }
+.dashboard-main { padding: 3rem; flex: 1; }
+.dashboard-menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+.menu-card { background: white; border-radius: 20px; padding: 2rem; text-decoration: none; color: inherit; text-align: center; border: 2px solid transparent; transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.menu-card:hover { transform: translateY(-10px); border-color: #a6c1ee; }
+.menu-icon { font-size: 3rem; color: #ff7675; margin-bottom: 1rem; }
+.menu-title { font-size: 1.2rem; font-weight: 600; color: #2c3e50; }
+.menu-icon svg { width: 64px; height: 64px; stroke: #ff7675; }
