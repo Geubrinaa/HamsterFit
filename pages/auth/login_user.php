@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username; // atau sesuai data user
         $_SESSION['id'] = $iduser;         // id user dari database
-        header('Location: pages/user/dashboarduser.php');
+        header('Location: ../user/dashboarduser.php');
         exit();
     } else {
         $error = 'Username atau password salah!';
