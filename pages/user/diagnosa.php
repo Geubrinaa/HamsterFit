@@ -94,7 +94,11 @@ if (!empty($hasil_diagnosa)) {
                     </div>
                 </div>
 
-                <div class="flex justify-center border-t border-gray-100 pt-8">
+                <div class="flex flex-col sm:flex-row justify-center gap-4 border-t border-gray-100 pt-8 print:hidden">
+                    <button onclick="window.print()" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3.5 px-8 rounded-xl shadow-md transition-all transform hover:-translate-y-0.5 text-center w-full sm:w-auto flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                        Cetak Hasil
+                    </button>
                     <a href="dashboarduser.php" class="bg-gray-800 hover:bg-gray-900 text-white font-bold py-3.5 px-8 rounded-xl shadow-md transition-all transform hover:-translate-y-0.5 text-center w-full sm:w-auto">
                         Kembali ke Dashboard
                     </a>

@@ -27,7 +27,7 @@ if (!isset($_SESSION['loggedin']) || !isset($_SESSION['username'])) {
                 </div>
                 <div class="flex items-center gap-4">
                     <span class="text-indigo-100 text-sm hidden sm:block">Halo, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
-                    <a href="../../logout.php" onclick="return confirm('Anda yakin ingin keluar?')" class="bg-indigo-500 hover:bg-rose-500 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-300 shadow-sm">Logout</a>
+                    <a href="../auth/logout.php" onclick="return confirm('Anda yakin ingin keluar?')" class="bg-indigo-500 hover:bg-rose-500 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-300 shadow-sm">Logout</a>
                 </div>
             </div>
         </div>

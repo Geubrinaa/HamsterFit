@@ -25,7 +25,7 @@ if (!isset($_SESSION['loggedin']) || !isset($_SESSION['username'])) {
                     </div>
                     <span class="text-white font-bold text-xl tracking-wide">Area Pemilik</span>
                 </div>
-                <a href="../../logout.php" onclick="return confirm('Anda yakin ingin keluar?')" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-4 py-2 rounded-xl text-sm font-semibold transition-all shadow-sm">Logout / Keluar</a>
+                <a href="../auth/logout.php" onclick="return confirm('Anda yakin ingin keluar?')" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-4 py-2 rounded-xl text-sm font-semibold transition-all shadow-sm">Logout / Keluar</a>
             </div>
         </div>
     </nav>

@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($user && $password === $user['password']) {
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $user['username'];
-        header('Location: pages/admin/dashboard.php');
+        header('Location: ../admin/dashboard.php');
         exit();
     } else {
         $error = 'Username atau password salah!';
