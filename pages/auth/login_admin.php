@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'includes/config.php'; // Pastikan $pdo sudah ada di sini
+require '../../includes/config.php'; // Pastikan $pdo sudah ada di sini
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
         
         <div class="mt-6 text-center">
-            <a href="portal.php" class="text-sm text-indigo-400 hover:text-indigo-600 font-medium transition-colors">← Kembali ke Portal</a>
+            <a href="../../index.php" class="text-sm text-indigo-400 hover:text-indigo-600 font-medium transition-colors">← Kembali ke Portal</a>
         </div>
     </div>
 </body>

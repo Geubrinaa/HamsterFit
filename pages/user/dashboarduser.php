@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['loggedin']) || !isset($_SESSION['username'])) {
-    header('Location: ../../login_user.php');
+    header('Location: ../auth/login_user.php');
     exit();
 }
 ?>

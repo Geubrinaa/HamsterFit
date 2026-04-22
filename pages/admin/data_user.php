@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['loggedin']) || !isset($_SESSION['username'])) {
-    header('Location: ../../login_admin.php');
+    header('Location: ../auth/login_admin.php');
     exit();
 }
 require '../../includes/config.php';
