@@ -1,26 +1,68 @@
 <?php
+// Session configuration
+ini_set('session.use_strict_mode', 1);
+ini_set('session.use_only_cookies', 1);
+ini_set('session.cookie_httponly', 1);
+
+error_log("Session save path: " . session_save_path());
+error_log("Session dir writable? " . (is_writable(session_save_path()) ? "YES" : "NO"));
+
 ob_start();
 session_start();
+
+error_log("Session started - Session ID: " . session_id());
+error_log("Session name: " . session_name());
+
 require '../../includes/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username'] ?? '');
     $password = trim($_POST['password'] ?? '');
 
-    // Cek user berdasarkan username
-    $stmt = $pdo->prepare('SELECT * FROM "user" WHERE username = :username');
-    $stmt->execute(['username' => $username]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // Cek user dan password
-    if ($user && $password === $user['password']) { // Ganti dengan password_verify jika sudah hash
-        $_SESSION['loggedin'] = true;
-        $_SESSION['username'] = $username; // atau sesuai data user
-        $_SESSION['id_user'] = $user['id_user']; // id user dari database
-        header('Location: ../user/dashboarduser.php');
-        exit();
+    if (empty($username) || empty($password)) {
+        $error = 'Username dan password tidak boleh kosong!';
     } else {
-        $error = 'Username atau password salah!';
+        try {
+            // Cek user berdasarkan username
+            $stmt = $pdo->prepare('SELECT * FROM "user" WHERE username = :username');
+            $stmt->execute(['username' => $username]);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            error_log("Login attempt - Username: '$username', User found: " . ($user ? "YES" : "NO"));
+            
+            if ($user) {
+                // Check password - juga cek dengan trim
+                $db_password = trim($user['password']);
+                $input_password = trim($password);
+                
+                error_log("Password comparison - DB: '$db_password' | Input: '$input_password' | Match: " . ($db_password === $input_password ? "YES" : "NO"));
+                
+                if ($db_password === $input_password) {
+                    // Set session variables
+                    $_SESSION['loggedin'] = true;
+                    $_SESSION['username'] = $user['username'];
+                    $_SESSION['id_user'] = $user['id_user'];
+                    $_SESSION['nama_user'] = $user['nama_user'];
+                    
+                    error_log("✓ LOGIN SUCCESS for user: " . $user['username'] . " (ID: " . $user['id_user'] . ")");
+                    error_log("Session data: " . json_encode($_SESSION));
+                    
+                    // Clear buffer and redirect
+                    ob_end_clean();
+                    header('Location: ../user/dashboarduser.php', true, 302);
+                    exit();
+                } else {
+                    $error = 'Username atau password salah!';
+                    error_log("✗ Password mismatch for user: $username");
+                }
+            } else {
+                $error = 'Username atau password salah!';
+                error_log("✗ User tidak ditemukan: $username");
+            }
+        } catch (Exception $e) {
+            $error = 'Terjadi kesalahan: ' . $e->getMessage();
+            error_log("✗ Login error: " . $e->getMessage());
+        }
     }
 }
 ?>
