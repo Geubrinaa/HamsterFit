@@ -62,6 +62,81 @@ if (!isset($_SESSION['loggedin']) || !isset($_SESSION['username'])) {
             </div>
 
         </div>
+
+        <!-- Chart Section -->
+        <div class="bg-white rounded-2xl p-6 shadow-md mt-10">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Statistik Pengguna</h2>
+            <canvas id="userChart" width="400" height="200"></canvas>
+        </div>
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('userChart').getContext('2d');
+        const userChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [], // Dynamic labels
+                datasets: [{
+                    label: 'Jumlah Pengguna',
+                    data: [], // Dynamic data
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    tension: 0.4 // Smooth curves
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Jumlah Pengguna yang Masuk (Realtime)'
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Bulan'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Jumlah Pengguna'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Function to fetch data from the server
+        async function fetchUserData() {
+            try {
+                const response = await fetch('get_user_data.php');
+                const data = await response.json();
+
+                if (data.error) {
+                    console.error(data.error);
+                    return;
+                }
+
+                // Update chart data
+                userChart.data.labels = data.map(item => item.month);
+                userChart.data.datasets[0].data = data.map(item => item.user_count);
+                userChart.update();
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        }
+
+        // Fetch data initially and then every 5 seconds
+        fetchUserData();
+        setInterval(fetchUserData, 5000);
+    </script>
 </body>
 </html>
