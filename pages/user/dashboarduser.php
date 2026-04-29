@@ -1,6 +1,13 @@
 <?php
 session_start();
-if (!isset($_SESSION['loggedin']) || !isset($_SESSION['username'])) {
+
+// Check if user is logged in
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header('Location: ../auth/login_user.php');
+    exit();
+}
+
+if (!isset($_SESSION['username'])) {
     header('Location: ../auth/login_user.php');
     exit();
 }
