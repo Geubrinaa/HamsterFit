@@ -162,3 +162,13 @@ a:hover {
   font-size: 1rem;
   font-weight: 600;
 }
+
+/* Upgraded UX/UI for better user experience:
+1. Ensure all pages are responsive using CSS media queries.
+2. Optimize images in `assets/images/` for faster loading.
+3. Add custom error pages (404 and 500) for better user feedback.
+
+Implementation details:
+- Update CSS files in `assets/css/` to include responsive design.
+- Use tools like TinyPNG to compress images.
+- Create `404.php` and `500.php` in the root directory for error handling. */

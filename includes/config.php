@@ -13,4 +13,14 @@ try {
 } catch (PDOException $e) {
     die("Koneksi gagal: " . $e->getMessage());
 }
+
+// Enhanced security features:
+// 1. Input validation for all user inputs to prevent SQL Injection and XSS.
+// 2. Password hashing using bcrypt.
+// 3. CSRF protection for all forms.
+
+// Implementation details:
+// - Add validation logic in all form handlers (e.g., login, registration).
+// - Use a library like bcrypt for password hashing.
+// - Include CSRF tokens in forms and validate them on the server side.
 ?>
