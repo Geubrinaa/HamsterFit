@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hamsterfit-app
+  namespace: devops-tools
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hamsterfit
+  template:
+    metadata:
+      labels:
+        app: hamsterfit
+    spec:
+      containers:
+      - name: hamsterfit-container
+        image: geubrinaa/hamsterfit:latest # Tag ini akan diupdate Jenkins nantinya
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hamsterfit-service
+  namespace: devops-tools
+spec:
+  selector:
+    app: hamsterfit
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
