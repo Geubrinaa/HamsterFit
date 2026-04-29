@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($user && $password === $user['password']) { // Ganti dengan password_verify jika sudah hash
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username; // atau sesuai data user
-        $_SESSION['id'] = $iduser;         // id user dari database
+        $_SESSION['id_user'] = $user['id_user']; // id user dari database
         header('Location: ../user/dashboarduser.php');
         exit();
     } else {
