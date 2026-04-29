@@ -1,10 +1,11 @@
 <?php
+ob_start();
 session_start();
 require '../../includes/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
+    $username = trim($_POST['username'] ?? '');
+    $password = trim($_POST['password'] ?? '');
 
     // Cek user berdasarkan username
     $stmt = $pdo->prepare('SELECT * FROM "user" WHERE username = :username');
