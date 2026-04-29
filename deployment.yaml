@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: hamsterfit-container
-          image: geubrinaa/hamsterfit:v-2.0
+          image: geubrinaa/hamsterfit:v2.0
           ports:
             - containerPort: 80
 ---
