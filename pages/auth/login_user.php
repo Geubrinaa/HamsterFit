@@ -1,23 +1,12 @@
 <?php
-// Session configuration
-ini_set('session.use_strict_mode', 1);
-ini_set('session.use_only_cookies', 1);
-ini_set('session.cookie_httponly', 1);
-
-error_log("Session save path: " . session_save_path());
-error_log("Session dir writable? " . (is_writable(session_save_path()) ? "YES" : "NO"));
-
-ob_start();
+ob_start(); // Start output buffering to prevent premature output
 session_start();
-
-error_log("Session started - Session ID: " . session_id());
-error_log("Session name: " . session_name());
 
 require '../../includes/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = trim($_POST['username'] ?? '');
-    $password = trim($_POST['password'] ?? '');
+    $username = trim($_POST['username'] ?? ''); // Ensure username is set
+    $password = trim($_POST['password'] ?? ''); // Ensure password is set
 
     if (empty($username) || empty($password)) {
         $error = 'Username dan password tidak boleh kosong!';
