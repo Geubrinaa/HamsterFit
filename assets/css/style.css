@@ -1,15 +1,164 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-body { min-height: 100vh; display: flex; justify-content: center; align-items: center; background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); }
-.container { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 3rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 100%; max-width: 400px; animation: fadeIn 0.8s ease-out; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-h2, h1 { color: #2c3e50; text-align: center; margin-bottom: 2rem; }
-.form-group, .input-group { margin-bottom: 1.5rem; position: relative; }
-label { display: block; margin-bottom: 0.5rem; color: #7f8c8d; font-size: 0.9rem; }
-input[type="text"], input[type="password"], input[type="file"], select { width: 100%; padding: 12px; border: 2px solid #e1e8ed; border-radius: 10px; outline: none; transition: border-color 0.3s; }
-input:focus { border-color: #a6c1ee; }
-.btn, button { display: block; width: 100%; padding: 12px; background: #ff7675; color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.3s; margin-top: 1rem; }
-.btn:hover, button:hover { background: #d63031; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255, 118, 117, 0.4); }
-a { color: #0984e3; text-decoration: none; }
-a:hover { text-decoration: underline; }
-.error, .alert { color: #d63031; background: #fab1a0; padding: 10px; border-radius: 8px; margin-bottom: 1rem; font-size: 0.9rem; }
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f4f9;
+  color: #333;
+}
+
+.container {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+/* Form Styles */
+input[type="text"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+button,
+.btn {
+  display: inline-block;
+  background: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background 0.3s,
+    transform 0.2s;
+}
+
+button:hover,
+.btn:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+
+/* Links */
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Alerts */
+.alert {
+  padding: 10px;
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #2c3e50;
+  color: #fff;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-header h1 {
+  font-size: 1.5rem;
+}
+
+.dashboard-header .admin-info {
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-header .admin-info .icon-user {
+  margin-right: 0.5rem;
+}
+
+.dashboard-header .logout-btn {
+  background: #e74c3c;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.dashboard-header .logout-btn:hover {
+  background: #c0392b;
+}
+
+/* Dashboard Menu */
+.dashboard-menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.menu-card {
+  background: #ecf0f1;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  transition:
+    transform 0.2s,
+    box-shadow 0.3s;
+  text-decoration: none;
+  color: #2c3e50;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.menu-card .menu-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #3498db;
+}
+
+.menu-card .menu-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
